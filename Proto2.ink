@@ -15,7 +15,7 @@ Each begin with {laura} affinity
  -> begin
  
  ===begin===
--The cars headlights illuminate the chain link fence. Barbed wire bristles along the top and it streches out into the gloom.
+-The cars headlights illuminate the chain link fence. On both sides it streches out into the gloom and barbed wire bristles along the top.
 +Case, could you make an opening? 
     Case: Yeah, I guess if I lift the whole thing up but someone might see it if they come by.
     ++Okay, lets think about it then
@@ -28,6 +28,7 @@ Each begin with {laura} affinity
         Suspicion raised to {suspicion}
     ->yard
     -else:
+    FAIL
     ->begin
     }
 +Laura, what do you think?
@@ -40,6 +41,7 @@ Each begin with {laura} affinity
         success 
     ->yard
     -else:
+    FAIL
     ->begin
     }
    
@@ -55,6 +57,7 @@ Each begin with {laura} affinity
         success
     ->yard
     -else:
+    FAIL
     ->begin
     }
 +why are we here again? []

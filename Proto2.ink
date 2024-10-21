@@ -62,11 +62,11 @@ Each begin with {laura} affinity
     }
 +why are we here again? []
     Ames: Prospero just said he said we needed something from inside
-    Laura: apparently we "will know when we see it" which is bull&%$@.
+    Laura: apparently we will "know when we see it" which is bull&%$@.
     **okay
     -> begin
 
 
 ===yard===
-
+The four of you are standing in a field encircled by fence.
     -> END

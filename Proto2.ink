@@ -1,8 +1,8 @@
-VAR laura_sta = 10
+VAR laura_sta = 5
 VAR laura_afn = 10
-VAR case_sta = 10
+VAR case_sta =5
 VAR case_afn = 10
-VAR ames_sta = 10
+VAR ames_sta = 5
 VAR ames_afn = 10
 VAR suspicion = 0
 
@@ -12,8 +12,8 @@ You (she/her) - telepathy, but physical touch causes intense and painful mental 
 Laura (she/her) - Stretch powers (a la mr fantastic), fashionable it girl
 Case (she/her) - Super strength, shy goth who isnt used to her new muscles.
 Ames (she/her) - Force field projection, pretentious nerd, understands Marx
-Each begin with {laura_sta} stamina and {laura_afn} affinity
-Power usage consumes stamina and success depends on affinity
+Each begin with {laura_sta} stamina and {laura_afn} trust
+Power usage consumes stamina and success depends on trust
 
  + Enter
  -> begin
@@ -85,9 +85,9 @@ The four of you are standing in a field encircled by fence. A low concrete build
     the wall is solid and impassable, but looking closer you can see a small air vent
         +++Case?
         I might be able to tear it down, but it would draw attention
-        ****Lets do it (CASE 3/{case_sta}, {case_afn*10}%)
+        ****Lets do it (CASE 3/{case_sta}, {case_afn*0}%)
         {
-        - case_afn*10 >= RANDOM(1, 100):
+        - case_afn*10-100 >= RANDOM(1, 100):
         ~suspicion = suspicion+1
         ~case_sta = case_sta-3
         Success
@@ -149,6 +149,8 @@ on the other end of the building there is a large metal door and a dull electric
 
 
 ===door===
+
+
 
 Laura's stamina: {laura_sta} 
 Laura's affinity: {laura_afn}

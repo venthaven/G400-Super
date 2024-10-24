@@ -6,7 +6,7 @@ VAR ames_sta = 5
 VAR ames_afn = 10
 VAR suspicion = 0
 
-
+on the cryptic instructions of a superhuman underground leader you make your way to a hidden power station in the  middle of nowhere
 Your party:
 You (she/her) - telepathy, but physical touch causes intense and painful mental feedback
 Laura (she/her) - Stretch powers (a la mr fantastic), fashionable it girl
@@ -45,8 +45,8 @@ Power usage consumes stamina and success depends on trust
         {
         -laura_afn*10-50 >= RANDOM(1, 100):
         ~laura_sta = laura_sta-1
+        success
         Laura stamina reduced to {laura_sta}
-        success 
         ->yard
         -else:
         FAIL
@@ -84,8 +84,8 @@ The four of you are standing in a field encircled by fence. A low concrete build
     ++inspect
     the wall is solid and impassable, but looking closer you can see a small air vent
         +++Case?
-        I might be able to tear it down, but it would draw attention
-            ****Lets do it (CASE 3/{case_sta}, {case_afn*0}%)
+        I don't think I could tear it down i think i could get hurt.
+            ****You don't know until you try (CASE 3/{case_sta}, {case_afn*0.1}%)
             {
             - case_afn*10-100 >= RANDOM(1, 100):
             ~suspicion = suspicion+1
@@ -96,25 +96,43 @@ The four of you are standing in a field encircled by fence. A low concrete build
                 ->backroom
             -else:
             FAIL
-            ->front
+            ~case_afn = case_afn-3
+            Case trust reduced to {case_afn}
+            ->yard
             }
             ++++nevermind
-            ->front
+            ->yard
         +++Laura?
-        I guess I could try to squeeze through the vent
-            ****Lets do it (LAURA 2/{laura_sta}, {laura_afn*5}%)
+        I guess I could try to squeeze through the vent and unlock the door from the other side, easy.
+            ****Lets do it (LAURA 4/{laura_sta}, {laura_afn*10}%)
             {
-            -laura_afn*10-50 >= RANDOM(1, 100):
+            -laura_afn*10 >= RANDOM(1, 100):
             ~laura_sta = laura_sta-2
             Laura stamina reduced to {laura_sta}
             success 
                 ->backroom
             -else:
             FAIL
-                ->front
+                ->yard
             }
+            ****i dont want you to push yourself too hard
+            Laura okay but i still totally could
+            ~ames_afn = ames_afn+1
+            Ames trust increased to {ames_afn}
+                *****i don't disagree, but we need you at your best if we get into a fight inside.
+                ->yard
+                *****i dont want to risk it
+                ~laura_afn = laura_afn-1
+                Laura trust decreased to {laura_afn}
+                ->yard
             ++++nevermind
-            ->front
+            ->yard
+        +++Ames?
+        Ames: I'm not sure how much I could help with my powers, Laura could slip through there but it could be a lot to ask. Case of course could try to tear the whole thing down, but shes never attempted anything that hard before.
+        Case: yeah I'm not so sure if I could do it.
+        Laura: speak for yourself, I could do it easily.
+        ++++thanks
+            ->yard
         +++step back
         ->yard
     ++go back
@@ -127,10 +145,10 @@ on the other end of the building there is a large metal door and a dull electric
 +inspect
     the door is locked and thick
     ++Case?
-    I might be able to tear it down, but it would draw attention
-    ***Lets do it (CASE 2/{case_sta}, {case_afn*10}%)
+    I might be able to tear it down, it wouldnt be easy and it would draw attention though
+    ***Lets do it (CASE 2/{case_sta}, {case_afn*8}%)
         {
-        - case_afn*10 >= RANDOM(1, 100):
+        - case_afn*10-20 >= RANDOM(1, 100):
         ~suspicion = suspicion+1
         ~case_sta = case_sta-2
         Success
@@ -145,10 +163,10 @@ on the other end of the building there is a large metal door and a dull electric
         ->front
     ++Laura?
     I guess I could try to squeeze in the keyhole and unlock it
-        ***Lets do it (LAURA 1/{laura_sta}, {laura_afn*5}%)
+        ***Lets do it (LAURA 3/{laura_sta}, {laura_afn*7}%)
             {
-            -laura_afn*10-50 >= RANDOM(1, 100):
-            ~laura_sta = laura_sta-1
+            -laura_afn*10-30 >= RANDOM(1, 100):
+            ~laura_sta = laura_sta-3
             Laura stamina reduced to {laura_sta}
             success 
                 ->door
@@ -159,20 +177,28 @@ on the other end of the building there is a large metal door and a dull electric
         +++nevermind
         ->front
     **Ames?
-    I don't think I could help here
+    Ames: I don't think I could help here, Laura has been practacing forming key shapes with me but it's not easy, Case could tear it down but we might want to be more discrete, besides we might want to save her strength in case we get into a fight.
+    Laura: Case in case?
+        ***Good one
+        ~laura_afn = laura_afn+1
+            Laura trust increased to {laura_afn}
+         ->front
         ***Okay, never mind
         ->front
-
++go back
+->yard
 
 
 ===door===
 ->endscreen
 
 ===backroom===
-you find 
+
 ->endscreen
 
 ===endscreen===
+you have entered the secret bunker
+
 Laura's stamina: {laura_sta} 
 Laura's affinity: {laura_afn}
 Case's stamina: {case_sta}

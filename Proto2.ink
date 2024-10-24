@@ -85,19 +85,36 @@ The four of you are standing in a field encircled by fence. A low concrete build
     the wall is solid and impassable, but looking closer you can see a small air vent
         +++Case?
         I might be able to tear it down, but it would draw attention
-        ****Lets do it (CASE 3/{case_sta}, {case_afn*0}%)
-        {
-        - case_afn*10-100 >= RANDOM(1, 100):
-        ~suspicion = suspicion+1
-        ~case_sta = case_sta-3
-        Success
-        Case stamina reduced to {case_sta}
-        Suspicion raised to {suspicion}
-            ->door
-        -else:
-        FAIL
+            ****Lets do it (CASE 3/{case_sta}, {case_afn*0}%)
+            {
+            - case_afn*10-100 >= RANDOM(1, 100):
+            ~suspicion = suspicion+1
+            ~case_sta = case_sta-3
+            Success
+            Case stamina reduced to {case_sta}
+            Suspicion raised to {suspicion}
+                ->backroom
+            -else:
+            FAIL
             ->front
-        }
+            }
+            ++++nevermind
+            ->front
+        +++Laura?
+        I guess I could try to squeeze through the vent
+            ****Lets do it (LAURA 2/{laura_sta}, {laura_afn*5}%)
+            {
+            -laura_afn*10-50 >= RANDOM(1, 100):
+            ~laura_sta = laura_sta-2
+            Laura stamina reduced to {laura_sta}
+            success 
+                ->backroom
+            -else:
+            FAIL
+                ->front
+            }
+            ++++nevermind
+            ->front
         +++step back
         ->yard
     ++go back
@@ -111,11 +128,11 @@ on the other end of the building there is a large metal door and a dull electric
     the door is locked and thick
     ++Case?
     I might be able to tear it down, but it would draw attention
-    ***Lets do it (CASE 1/{case_sta}, {case_afn*10}%)
+    ***Lets do it (CASE 2/{case_sta}, {case_afn*10}%)
         {
         - case_afn*10 >= RANDOM(1, 100):
         ~suspicion = suspicion+1
-        ~case_sta = case_sta-1
+        ~case_sta = case_sta-2
         Success
         Case stamina reduced to {case_sta}
         Suspicion raised to {suspicion}
@@ -149,9 +166,13 @@ on the other end of the building there is a large metal door and a dull electric
 
 
 ===door===
+->endscreen
 
+===backroom===
+you find 
+->endscreen
 
-
+===endscreen===
 Laura's stamina: {laura_sta} 
 Laura's affinity: {laura_afn}
 Case's stamina: {case_sta}

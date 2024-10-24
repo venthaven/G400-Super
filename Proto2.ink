@@ -204,7 +204,7 @@ Laura's affinity: {laura_afn}
 Case's stamina: {case_sta}
 Case's affinity: {case_afn}
 Ames's stamina: {ames_sta}
-Ames's stamina: {ames_afn}
+Ames's affinity: {ames_afn}
 Suspicion: {suspicion}
     -> END
 
